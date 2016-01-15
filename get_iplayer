@@ -4519,7 +4519,7 @@ sub tag_file {
 	# return if file does not exist
 	return if ! -f $prog->{filename};
 	# download thumbnail if necessary
-	$prog->download_thumbnail if ( $opt->{tagonly} || ! -f $prog->{thumbfile} );
+	$prog->download_thumbnail unless -f $prog->{thumbfile};
 	if ( $prog->{type} ne "podcast" ) {
 		# create metadata
 		my $meta = $prog->tag_metadata;
